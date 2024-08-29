@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desconto exclusivo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        
+        /* Estilos Globais */
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        img, iframe {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #19bb00;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Navegação */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            max-width: 100%;
+        }
+
+        .logo img {
+            height: 30px; /* Ajuste conforme necessário */
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+        }
+
+        .nav-menu a:hover {
+            color: #016c11; /* Cor do link ao passar o mouse */
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            background: linear-gradient(to right, #00eb33, #bfff00);
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            font-weight: bolder;
+            margin: 40px 0;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .hero img {
+            max-width: 95%;
+        }
+
+        .hero button {
+            background-color: #c11010;
+            color: #05d521;
+            padding: 15px 30px;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 15px;
+        }
+
+        /* Botão de Call to Action */
+        .cta-button {
+            background-color: #ffffff;
+            color: #097b1e;
+            padding: 15px 30px;
+            border: 2px solid #19bb00; /* Borda verde */
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold; /* Texto em negrito */
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease; /* Transição suave para os efeitos */
+            margin-top: 40px; /* Margem acima do botão */
+        }
+
+        .cta-button:hover {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7); /* Efeito de brilho ao passar o mouse */
+        }
+
+        /* Seção de Produtos */
+        /* Seção de Produtos */
+        /* Seção de Produtos */
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 50px 0px 100px 0px;
+            padding: 100px 0px 50px 0px;
+            width:300
+        }
+        
+        .product {
+            flex: 1 1 calc(33.333% - 20px);
+            box-sizing: border-box;
+            padding: 100px 10px 50px 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            position: relative; /* Adicionado para posicionar o botão fixo */
+            display: flex;
+            flex-direction: column; /* Adiciona flex-direction column para organizar conteúdo */
+            margin: 10px 0px 10px 0px; /* Adiciona 20px de margem na parte superior */
+            width:300
+        }
+
+        .product img {
+            width: 20%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .product h2 {
+            margin: 10px 0;
+            font-size: 1.5em;
+        }
+
+        .product .pricing {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        .product .price {
+            flex: 1;
+            color: #4CAF50; /* Cor verde */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centraliza verticalmente o conteúdo */
+        }
+
+        .product .price span {
+            font-weight: bold;
+        }
+
+        .product .price.price-cash {
+            text-align: left;
+            align-items: flex-start; /* Alinha o conteúdo ao início da coluna */
+
+        }
+        .product .price.price-installment {
+            text-align: right;
+            align-items: flex-end; /* Alinha o conteúdo ao final da coluna */
+        }
+        /* Ajusta os tamanhos das fontes para cada parte do preço */
+        .product .price.price-cash .cash-label {
+            font-size: 8px; /* Tamanho da fonte para "À Vista:" */
+            display: block;
+            color: #000000;
+        }
+        .old-price {
+            color: #888; /* Cor do preço riscado */
+            text-decoration: line-through; /* Linha que risca o preço antigo */
+            margin-right: 10px; /* Espaçamento entre o preço antigo e o atual */
+            font-size: 14px; /* Tamanho do preço antigo */
+        }
+        .product .price.price-cash .cash-amount {
+            font-size: 18px; /* Tamanho da fonte para "R$ 1.000,00" */
+            display: block;
+        }
+
+        .product .price.price-installment {
+            text-align: right;
+            align-items: flex-end; /* Alinha o conteúdo ao final da coluna */
+        }
+        /* Ajusta o tamanho da fonte dos dois primeiros dígitos do valor parcelado */
+        .product .price.price-installment .installment-amount {
+            font-size: 48px; /* Tamanho da fonte para "R$ 100,00" */
+            font-weight: bold;
+            display: block;
+        }
+
+        .product .price.price-installment .installment-text {
+            font-size: 12px; /* Tamanho da fonte para "12x" */
+            display: block;
+            color: #000000;
+        }
+
+
+        .product ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.9em;
+            text-align: left;
+        }
+
+        .product li {
+            margin-bottom: 10px;
+        }
+
+        .product button.add-to-cart {
+            position: absolute;
+            bottom: 10px; /* Espaço entre o botão e o fundo do container */
+            left: 0;
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .product button.add-to-cart:hover {
+            background-color: #45a049;
+        }
+
+
+        .product ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .product ul li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .product ul li i {
+            color: #02a224;
+            margin-right: 10px;
+        }
+
+        /* Promoção */
+        .promo-container {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+            background-color: #003C00;
+            color: #FFFFFF;
+            text-decoration: none;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .promo-text {
+            padding: 8px;
+            min-width: 80px;
+            background-color: #8062FF;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+           
+        }
+
+        .countdown {
+            display: flex;
+            gap: 16px;
+            color: #BFFF00;
+        }
+
+        .countdown-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .countdown-number {
+            font-size: 38px;
+            font-weight: bold;
+        }
+
+        .countdown-text {
+            font-size: 14px;
+            font-weight: normal;
+        }
+
+        .countdown-separator {
+            margin: auto 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* Botões Customizados */
+        .buttons-container {
+            display: flex;
+            gap: 20px;
+            margin: 40px 0; /* Ajuste a margem conforme necessário */
+            justify-content: center;
+            flex-wrap: nowrap
+        }
+
+        .custom-button {
+            background-color: #f5f5f5; /* Cor de fundo do botão */
+            border: 2px solid #19bb00; /* Cor da borda */
+            border-radius: 15px; /* Bordas arredondadas */
+            padding: 15px;
+            text-align: center;
+            width: 200px; /* Ajuste a largura conforme necessário */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .custom-button::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 20px; /* Largura da borda não arredondada */
+            height: 20px; /* Altura da borda não arredondada */
+            background-color: #f5f5f5; /* Cor de fundo do botão, igual ao do botão */
+        }
+
+        .button-text {
+            font-size: 18px; /* Ajuste o tamanho da fonte conforme necessário */
+            font-weight: bold;
+        }
+
+        .top-text {
+            font-size: 24px; /* Tamanho maior para o texto superior */
+            color: #0F3517; /* Ajuste a cor conforme necessário */
+        }
+
+        .bottom-text {
+            font-size: 16px; /* Tamanho menor para o texto inferior */
+            color: #333; /* Ajuste a cor conforme necessário */
+        }
+
+        /* Container e Footer */
+        .container1 {
+            padding: 40px 16px;
+            width: 100%;
+        }
+
+        .header {
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .header h2 {
+            font-weight: bold;
+        }
+
+        .header span {
+            color: #19bb00; /* Destaque a cor como necessário */
+        }
+
+        .button-section {
+            text-align: center;
+        }
+
+        .button-section p {
+            margin-bottom: 16px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 24px;
+            background-color: #023e0d;
+            color: white;
+            padding: 20px;
+        }
+
+        .regulation-link {
+            display: inline-block;
+            margin-bottom: 24px;
+            font-size: 16px;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+
+        .text-highlight {
+            color: #19bb00;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28a745; /* Cor verde */
+            color: #ffffff; /* Cor do texto */
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #218838; /* Cor verde mais escura ao passar o mouse */
+        }
+
+        .btn-text {
+            display: block;
+        }
+
+        /* Estilos para dispositivos móveis */
+        @media (max-width: 768px) {
+            
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .hero button {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+
+            .products {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .product {
+                width: 80%; /* Ocupa toda a largura da tela em dispositivos móveis */
+                max-width: 80%; /* Garante que a largura não exceda 100% */
+                padding: 50px 30px 50px 30px; /* Ajusta o padding para telas menores */
+            }
+            .product img {
+                width: 50%;
+                height: auto;
+                border-radius: 8px;
+            }
+
+            .buttons-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        a svg {
+            vertical-align: middle; /* Alinha o SVG verticalmente com o texto */
+            margin-right: 8px; /* Espaço entre o ícone e o texto */
+        }
+    </style>
+</head>
+<body>
+
+    
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="./Ton_Parceiro_Logo_RGB_Ton-Parceiro-Logo-Hor-Verde-RGB cópia.png" alt="Logo">
+            </div>
+            <nav class="nav-menu">
+                <a href="#products">Catálogo</a>
+                <a href="#taxas">Taxas</a>
+                <a href="https://rastreie.ton.com.br/orders" target="_blank">
+                    Rastreio</a>
+            </nav>
+        </div>
+    </header>
+
+    
+    </nav>
+    <a class="promo-container">
+        <div class="promo-text">
+            PROMO ATÉ 35% OFF ACABA EM:
+        </div>
+        <div class="countdown">
+            <div class="countdown-unit">
+                <span class="countdown-number" id="days">2</span>
+                <span class="countdown-text">dias</span>
+            </div>
+            <span class="countdown-separator">:</span>
+            <div class="countdown-unit">
+                <span class="countdown-number" id="hours">12</span>
+                <span class="countdown-text">horas</span>
+            </div>
+            <span class="countdown-separator">:</span>
+            <div class="countdown-unit">
+                <span class="countdown-number" id="minutes">43</span>
+                <span class="countdown-text">minutos</span>
+            </div>
+            <span class="countdown-separator">:</span>
+            <div class="countdown-unit">
+                <span class="countdown-number" id="seconds">27</span>
+                <span class="countdown-text">segundos</span>
+            </div>
+        </div>
+    </a>
+    
+    <script>
+        function startCountdown(endTime) {
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = endTime - now;
+    
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = hours;
+                document.getElementById('minutes').textContent = minutes;
+                document.getElementById('seconds').textContent = seconds;
+    
+                if (distance < 0) {
+                    clearInterval(interval);
+                    document.querySelector('.countdown').textContent = "Promoção Expirada!";
+                }
+            }
+    
+            updateCountdown();
+            const interval = setInterval(updateCountdown, 1000);
+        }
+    
+        const countdownEndTime = new Date("Aug 31, 2024 23:59:59").getTime();
+        startCountdown(countdownEndTime);
+    </script>
+   
+    <div class="hero">
+        <div class="text">
+            <div class="buttons-container">
+                <div class="custom-button">
+                    <div class="button-text top-text">0,79%</div>
+                    <div class="button-text bottom-text">Débito e Crédito Av.</div>
+                </div>
+                <div class="custom-button">
+                    <div class="button-text top-text">8,99%</div>
+                    <div class="button-text bottom-text">Parcelado em 12x</div>
+                </div>
+                <div class="custom-button">
+                    <div class="button-text top-text">0%</div>
+                    <div class="button-text bottom-text">Pix</div>
+                </div>
+            </div>
+            <h1 class="text-left">
+                <span class="text-white large-font"style="font-weight: 900;">Maquininha com até</span> 
+                <span class="text-green large-font"style="font-weight: 900;">35% de desconto</span>
+            </h1>
+            
+            
+            <p class="hidden md:block lg:paragraph-18 spacing-below">
+                A melhor máquina de cartão para você vender rápido e receber todo o dinheiro no mesmo dia na Super Conta Ton.
+            </p>
+            
+            
+            
+        </div>
+        <div class="image">
+            <img src="https://res.cloudinary.com/dunz5zfpt/q_auto/site-ton/promo35OFF/maquininha-de-cartao-ton-banner-home-header-mobile.png" alt="Promoção de Maquininha">
+        </div>
+        
+    </div>
+    
+
+   
+    <!-- Seção de Produtos -->
+    <section class="products" id="products">
+        <div class="product">
+            <img src="https://res.cloudinary.com/dunz5zfpt/fl_progressive/f_auto,c_limit,w_256,q_90/site-ton/maquininhas/new-t2-2" alt="Produto 1">
+            <h2>T2+ PromoTon</h2>
+            <div class="pricing">
+                <div class="price price-cash">
+                    <del class="old-price">R$ 190,80</del> <!-- Preço antigo riscado -->
+                    <span class="cash-amount">R$ 126,54</span>
+                    <span class="cash-label"à vista ou</span>
+                </div>
+                <div class="price price-installment">
+                    <span class="installment-text">12x R$</span>
+                    <span class="installment-amount">10,54</span>
+                </div>
+            </div>
+            <p>
+                <ul>
+                    <li><i class="fas fa-qrcode"></i> Pix QR Code na máquina</li>
+                    <li><i class="fas fa-credit-card"></i> Link Pagamento Parcelado</li>
+                    <li><i class="fas fa-wifi"></i> Wi-Fi e Chip 3G GRÁTIS</li>
+                    <li><i class="fas fa-battery-half"></i> PGMt por Aproximação</li>
+                    <li><i class="fas fa-mobile-alt"></i> Comprovante via App e SMS</li>
+                    <li><i class="fas fa-mobile-alt"></i> Não Precisa de Celular</li>
+                    <li><i class="fas fa-shield-alt"></i> Garantia Vitalícia</li>
+                </ul>
+            </p>
+            <a href="https://ton.com.br/checkout/cart/?productId=PROMOTON_TIER_D195&referrer=914F172C-25E8-4C0E-925E-1FC274E39C71&userTag=promoton_tier&utm_medium=invite_share&utm_source=revendedor" target="_blank">
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </a>
+        </div>
+    <div class="product">
+        <img src="https://res.cloudinary.com/dunz5zfpt/fl_progressive/f_auto,c_limit,w_128,q_90/site-ton/maquininhas/new-t3-2" alt="Produto 2">
+        <h2>T3 PromoTon</h2>
+        <div class="pricing">
+            <div class="price price-cash">
+                <del class="old-price">R$ 394,80</del> <!-- Preço antigo riscado -->
+                <span class="cash-amount">R$ 262,20</span>
+                <span class="cash-label"à vista ou</span>
+            </div>
+            <div class="price price-installment">
+                <span class="installment-text">12x R$</span>
+                <span class="installment-amount">21,85</span>
+            </div>
+        </div>
+        <p>
+            <ul>
+                <li><i class="fas fa-qrcode"></i> Pix QR Code na máquina</li>
+                <li><i class="fas fa-credit-card"></i> Link Pagamento Parcelado</li>
+                <li><i class="fas fa-wifi"></i> Wi-Fi e Chip 3G GRÁTIS</li>
+                <li><i class="fas fa-battery-half"></i> PGMt por Aproximação</li>
+                <li><i class="fas fa-print"></i> Comprovante Impresso</li>
+                <li><i class="fas fa-battery-full"></i> Bateria de Longa Duração</li>
+                <li><i class="fas fa-shield-alt"></i> Garantia Vitalícia</li>
+            </ul>
+        </p>
+        <a href="https://ton.com.br/checkout/cart/?productId=PROMOTON_TIER_S920&referrer=914F172C-25E8-4C0E-925E-1FC274E39C71&userTag=promoton_tier&utm_medium=invite_share&utm_source=revendedor" target="_blank">
+            <button class="add-to-cart">Adicionar ao Carrinho</button>
+        </a>
+    </div>
+    <div class="product">
+        <img src="https://res.cloudinary.com/dunz5zfpt/fl_progressive/f_auto,c_limit,w_128,q_90/site-ton/maquininhas/new-t3-smart-2" alt="Produto 3">
+        <h2>T3 Smart PromoTon</h2>
+        <div class="pricing">
+            <div class="price price-cash">
+                <del class="old-price">R$ 478,80</del> <!-- Preço antigo riscado -->
+                <span class="cash-amount">R$ 295,35</span>
+                <span class="cash-label"à vista ou</span>
+            </div>
+            <div class="price price-installment">
+                <span class="installment-text">12x R$</span>
+                <span class="installment-amount">24,61</span>
+            </div>
+        </div>
+        <p>
+            <ul>
+                <li><i class="fas fa-qrcode"></i> Pix QR Code na máquina</li>
+                <li><i class="fas fa-credit-card"></i> Link Pagamento Parcelado</li>
+                <li><i class="fas fa-android"></i> Tecnologia Android</li>
+                <li><i class="fas fa-wifi"></i> Wi-Fi e Chip 4G GRÁTIS</li>
+                <li><i class="fas fa-print"></i> Comprovante Impresso</li>
+                <li><i class="fas fa-battery-full"></i> PGMt por Aproximação</li>
+                <li><i class="fas fa-battery-three-quarters"></i> Bateria de Longa Duração</li>
+                <li><i class="fas fa-shield-alt"></i> Garantia Vitalícia</li>
+            </ul>
+        </p>
+        <a href="https://ton.com.br/checkout/cart/?productId=PROMOTON_TIER_SMART_POS&referrer=914F172C-25E8-4C0E-925E-1FC274E39C71&userTag=promoton_tier&utm_medium=invite_share&utm_source=revendedor" target="_blank">
+            <button class="add-to-cart">Adicionar ao Carrinho</button>
+        </a>
+    </div>
+</section>
+
+
+    <div class="container1"id="taxas">
+        <div class="header">
+            <h2>Conheça as taxas do <span>PromoTon</span></h2>
+        </div>
+        <div class="button-section">
+            <p>Bandeiras</p>
+            <div class="button-group">
+                <div class="custom-button">
+                    <div class="button-text top-text">0,79%</div>
+                    <div class="button-text bottom-text">Débito e Crédito Av.</div>
+                </div>
+                <div class="custom-button">
+                    <div class="button-text top-text">8,99%</div>
+                    <div class="button-text bottom-text">Parcelado em 12x</div>
+                </div>
+                <div class="custom-button">
+                    <div class="button-text top-text">0%</div>
+                    <div class="button-text bottom-text">Pix</div>
+                </div>
+            </div>
+        </div>
+        <center>
+        <div class="container1">
+            <a class="regulation-link" target="_blank" rel="noreferrer" href="https://documentos.ton.com.br/regulamento-promoton-tier.pdf?referrer=914F172C-25E8-4C0E-925E-1FC274E39C71&utm_medium=invite_share&utm_source=revendedor"target="_blank">
+                <u class="font-bold text-highlight">Conheça o Regulamento do Plano PromoTon</u>
+            </a>
+            <br>
+            <a class="btn" href="https://ton.com.br/catalogo/?referrer=914F172C-25E8-4C0E-925E-1FC274E39C71&utm_medium=invite_share&utm_source=revendedor#calculadora"target="_blank">
+                <span class="btn-text">
+                    Simule suas taxas
+                </span>
+            
+            </a>
+        </div>
+        </center>
+    </div>
+    <center>
+        <div class="logo">
+            <img src="./Ton_Parceiro_Logo_RGB-07.png"
+                 alt="Logo"
+                 style="width: 200px; height: auto;" /> <!-- ajuste o valor conforme necessário -->
+        </div>
+    </center>
+    
+    
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="footer"><p><center>
+           
+            
+            &copy;Copyright ©2023 All rights reserved | Parceiro Autorizado Ton | Mayk Moreira. <br> 
+
+            Declaramos para todos os fins, que este canal é de titularidade de um consultor parceiro Renda Ton, <br>que oferece descontos para aquisição dos produtos e serviços do Ton <br> Não se confundindo com os canais oficiais do Ton que podem ser acessados em “ton.com.br”</p>
+    </center></div>
+         </footer>
+
+    <script>
+        // Exemplo de interatividade básica
+        document.querySelectorAll('.product button').forEach(button => {
+            button.addEventListener('click', () => {
+                alert('Produto adicionado ao carrinho!');
+            });
+        });
+    </script>
+    
+
+</body>
+</html>
